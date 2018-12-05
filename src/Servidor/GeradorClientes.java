@@ -26,7 +26,7 @@ class GeradorClientes implements Runnable {
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             out = new PrintWriter(socket.getOutputStream(), true);
             String linha;
-            while ((linha = in.readLine()) != null && ((linha.trim().equals(""))|| (linha.trim().equals("quit")))) {
+            while ((linha = in.readLine()) != null && !((linha.trim().equals(""))|| (linha.trim().equals("quit")))) {
                 out.println("Eco: " + linha);
             }
             
@@ -40,7 +40,7 @@ class GeradorClientes implements Runnable {
                 if (in != null) {
                     in.close();
                     socket.close();
-                    ServidorDeEco.diminuirtQuantidadeClientes();
+                    ServidorDeEco.diminuirQuantidadeClientes();
                 }
             } catch (Exception e){
                     e.printStackTrace();

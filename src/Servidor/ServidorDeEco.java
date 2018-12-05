@@ -44,7 +44,7 @@ public class ServidorDeEco {
         }
     }
 
-    public static void diminuirtQuantidadeClientes() {
+    public static void diminuirQuantidadeClientes() {
         
         quantidadeClientes = quantidadeClientes-1;
         System.out.println("Clientes conectados: "+ quantidadeClientes);

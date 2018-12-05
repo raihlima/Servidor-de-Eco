@@ -24,7 +24,7 @@ public class ClienteDeEco {
                 linha = entrada.readLine();
                 if (linha == null) {
                     System.out.println("Conexão encerrada!");
-                    ServidorDeEco.diminuirtQuantidadeClientes();
+                    ServidorDeEco.diminuirQuantidadeClientes();
                     break;
                 } else {
                     System.out.println(linha);
