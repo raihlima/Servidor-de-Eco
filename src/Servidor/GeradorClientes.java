@@ -26,10 +26,20 @@ class GeradorClientes implements Runnable {
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             out = new PrintWriter(socket.getOutputStream(), true);
             String linha;
-            while ((linha = in.readLine()) != null && !((linha.trim().equals(""))|| (linha.trim().equals("quit")))) {
-                out.println("Eco: " + linha);
+            String subLista;
+            while ((linha = in.readLine()) != null && !((linha.trim().equals("quit")))) {
+                if (linha.length() > 3) {
+                    subLista = linha.substring(0, 3);
+                    if (subLista.equalsIgnoreCase("eco")) {
+                        out.println("Eco: " + linha.substring(3, linha.length()));
+                    } else {
+                        out.println("");
+                    }
+                } else {
+                    out.println("");
+                }
             }
-            
+
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -42,9 +52,9 @@ class GeradorClientes implements Runnable {
                     socket.close();
                     ServidorDeEco.diminuirQuantidadeClientes();
                 }
-            } catch (Exception e){
-                    e.printStackTrace();
-              }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
